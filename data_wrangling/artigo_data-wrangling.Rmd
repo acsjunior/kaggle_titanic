@@ -1,6 +1,6 @@
 ---
 title: "Desafio do Titanic do Kaggle"
-subtitle: "Preparação dos dados para modelagem"
+subtitle: "Uma abordagem didática na exploração e preparação dos dados para análise preditiva"
 author:
 - Antonio C. da Silva Júnior
 - https://juniorssz.github.io/home/
@@ -136,9 +136,9 @@ O arquivo <b>train.csv</b> corresponde aos dados de 891 passageiros e deve ser u
 Efetuado o download dos datasets, podemos carregá-los:
 
 ```{r}
-df_train <- read.csv("../Data/Kaggle/train.csv", na.strings = c("", NA), encoding = "UTF-8")
+df_train <- read.csv("../data/train.csv", na.strings = c("", NA), encoding = "UTF-8")
 
-df_test <- read.csv("../Data/Kaggle/test.csv", na.strings = c("", NA), encoding = "UTF-8")
+df_test <- read.csv("../Data/test.csv", na.strings = c("", NA), encoding = "UTF-8")
 ```
 
 Em seguida unificamos os arquivos para facilitar as etapas seguintes:
@@ -798,7 +798,7 @@ df_all <- df_all %>%
 Agora vamos transformar as variáveis categóricas em dummies:
 
 ```{r}
-df_all <- dummy_cols(df_all, select_columns = c("Pclass", "Embarked", "Title"), remove_selected_columns = T, remove_first_dummy = T)
+df_all <- dummy_cols(df_all, select_columns = c("Pclass", "Embarked", "Title",  "Sex"), remove_selected_columns = T, remove_first_dummy = T)
 ```
 
 Em seguida, separar novamente em dados de treino e teste:

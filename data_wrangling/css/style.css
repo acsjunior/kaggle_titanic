@@ -1,0 +1,47 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: 250px 50px 1fr;
+}
+
+.wrapper2 {
+  display: grid;
+  grid-template-columns: 1fr 350px;
+}
+
+.contacts {
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  font-size: 14px;
+}
+
+.round {
+  border-radius: 50%;
+}
+
+.roundcorner {
+  border-radius: 25px;
+}
+
+.contactimage {
+  display:inline-block; 
+  min-width:2cm; 
+  height:2cm; 
+  align: center;
+  vertical-align: middle;
+}
+
+.contactimagesize {
+  height:1.5cm;
+}
+
+.contacttext {
+  display:inline-block;
+  vertical-align: middle;
+}
+
+
+slides > slide:not(.nobackground):after {
+  content: '';
+
+
+
