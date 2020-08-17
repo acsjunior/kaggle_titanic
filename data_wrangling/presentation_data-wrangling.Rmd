@@ -140,6 +140,8 @@ knitr::opts_chunk$set(echo = FALSE)
 
 * Pode ser aplicado tanto em problemas de classificação como de regressão<br><br><br>
 
+* Os preditores devem estar padronizados [@Kuhn2013]
+
 
 ## O KNN em um problema de regressão
 
