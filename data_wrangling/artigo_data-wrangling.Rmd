@@ -497,7 +497,6 @@ df_knn <- df_all %>%
 O KNN necessita que todas as covariáveis sejam numéricas, portanto, precisamos transformar as covariáveis categóricas em dummies (binárias). Aqui é válido ressaltar que uma covariável categórica com $n$ níveis deve ser transformada em $n-1$ covariáveis binárias, segundo Fávero e Belfiore [-@Favero2017]. Portanto, como vamos utilizar a função <code>dummy_cols()</code> do pacote <b>fastDummies</b>, basta definirmos o argumento <i>remove_first_dummy</i> como <code>TRUE</code>.
 
 ```{r}
-# https://sci-hub.tw/10.1093/bioinformatics/17.6.520#
 df_knn <- dummy_cols(df_knn, select_columns = c("Pclass", "Sex", "Title", "Embarked"), remove_selected_columns = T, remove_first_dummy = T)
 ```
 

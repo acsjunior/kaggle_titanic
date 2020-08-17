@@ -10,6 +10,7 @@
 require(dplyr)
 require(stringr)
 require(fastDummies)
+require(ggplot2)
 require(caret)
 source("utils/funcoes_uteis.R")
 
@@ -54,7 +55,7 @@ count_missing_values(df_completo)
 # Sexo:
 
 # Frequência:
-custom_barPlot(df = df_all, 
+custom_barPlot(df = df_completo, 
                var_x = "Sex", 
                lab_x = "Sexo", 
                lab_y = "Passageiros", 
@@ -206,3 +207,77 @@ df_completo %>%
 
 #---------------------------------------------------------------------------------
 # Idade:
+
+count_missing_values(df_completo)
+
+# Montando o conjunto de dados
+df_knn <- df_completo %>%
+  dplyr::select(PassengerId, Age, Embarked,  Pclass, Fare, Sex, Title, Family_size) %>%
+  filter(!is.na(Embarked), !is.na(Fare))
+
+
+# Criando variáveis dummy
+df_knn <- dummy_cols(df_knn, select_columns = c("Pclass", "Sex", "Title", "Embarked"), remove_selected_columns = T, remove_first_dummy = T)
+
+
+# Criando o dataset para o treino do modelo
+df_knn_train <- df_knn %>%
+  filter(!is.na(Age))
+
+# Padronizando as covariáveis
+procValues_knn <- preProcess(df_knn_train[c(-1,-2)], method = c("center", "scale"))
+df_knn_train <- predict(procValues_knn, df_knn_train)
+
+# Encontrando o melhor k
+grid_k <- data.frame(.k = seq(1,30, 2))
+
+set.seed(10)
+knn_model <- train(form = Age ~ .,
+                   data = df_knn_train[-1],
+                   method = "knn",
+                   tuneGrid = grid_k,
+                   trControl = trainControl(method = "cv", number = 5))
+
+knn_model
+# RMMSE: Root Mean Squaret Error - quanto menor, melhor
+# Rsquared: R^2 (Coeficiente de determinação) - quanto maior, melhor
+# MAE: Mean absolute error - quanto menor, melhor
+
+k <- knn_model$bestTune[,1]
+plot(knn_model, main = paste0("k = ", k))
+
+
+# Criando o dataset para predição das idades
+df_pred <- df_knn %>%
+  filter(is.na(Age))
+
+# Padronizando as covariáveis
+df_pred <- predict(procValues_knn, df_pred)
+
+
+# Predizendo as idades
+df_pred$Age <- predict(knn_model$finalModel, newdata = df_pred[c(-1,-2)])
+
+df_pred <- df_completo %>% 
+  left_join(df_pred[c("PassengerId", "Age")], by = "PassengerId")
+df_completo$Age <- coalesce(df_pred$Age.x, df_pred$Age.y)
+
+count_missing_values(df_completo)
+
+
+# Conferindo as estatísticas da idade:
+summary(df_completo$Age)
+
+# Comportamento da idade com relação à sobrevivência
+custom_boxPlot(df = df_completo, 
+               var_x = "Survived",
+               var_y = "Age",
+               title = "Boxplot da idade em relação à sobrevivência")
+
+quantile(df_completo$Age)
+
+
+#---------------------------------------------------------------------------------
+# Porto de embarque:
+
+count_missing_values(df_completo)

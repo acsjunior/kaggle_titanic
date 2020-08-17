@@ -39,6 +39,10 @@
   vertical-align: middle;
 }
 
+.destaque {
+  color: #4285f4;
+}
+
 
 slides > slide:not(.nobackground):after {
   content: '';

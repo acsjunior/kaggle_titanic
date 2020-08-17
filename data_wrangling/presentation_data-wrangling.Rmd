@@ -24,7 +24,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
   <div>
 <div align="center">
-<img src="img/avatar.jpg" width=200 height=200, class="round"><br>
+<img src="https://juniorssz.github.io/home/author/antonio-c.-da-silva-junior/avatar_hu1c8f05eb6d1f4d9d8b913ed555dc49f7_35327_270x270_fill_q90_lanczos_center.jpg" width=200 height=200, class="round"><br>
 <h5>Antonio C. da Silva Júnior</h5>
 <br>Cientista de dados
 </div>
@@ -58,6 +58,15 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## As competições
 
+* Um caso<br><br><br>
+
+* Bases de dados para treinamento e validação<br><br><br>
+
+* A validação é efetuada após a submissão dos resultados
+
+
+## O desafio do Titanic
+
 * Classificar quais passageiros sobreviveram ao naufrágio<br><br><br>
 
 * Exemplo de dados: sexo, idade, porto de embarque, classe, tarifa...<br><br><br>
@@ -70,6 +79,17 @@ knitr::opts_chunk$set(echo = FALSE)
 * Quais perguntas eu quero responder?<br><br><br>
 
 * Exploração e preparação dos dados<br><br><br>
+
+* Treinamento do modelo preditivo<br><br><br>
+
+* Validação dos resultados
+
+
+## Análise preditiva
+
+* Quais perguntas eu quero responder?<br><br><br>
+
+* <span class="destaque">Exploração e preparação dos dados</span><br><br><br>
 
 * Treinamento do modelo preditivo<br><br><br>
 
@@ -170,21 +190,43 @@ knitr::opts_chunk$set(echo = FALSE)
 </center>
 
 
-## Validação cruzada por K-Fold
+## O KNN em um problema de classificação
 
-* Técnica para separação dos dados de treino e validação do modelo<br><br><br>
+<center>
+![](img/knn_class5.png){width=50%, height=50%}
+</center>
+
+
+## O KNN em um problema de classificação
+
+<center>
+![](img/knn_class6.png){width=50%, height=50%}
+</center>
+
+
+## Validação cruzada
+
+* Técnicas para separação dos dados de treino e validação do modelo<br><br><br>
 
 * Propósito de reduzir o viés e a variância
 
 
-## Validação cruzada por K-Fold
+## Validação cruzada
 
 <center>
 ![](img/bias.png){width=57%, height=57%}
 <center>
 
 
-## Validação cruzada por K-Fold (5 folds)
+## Validação cruzada - método holdout
+
+<center>
+![](img/holdout_cv.png){width=100%, height=100%}
+<center>
+
+
+
+## Validação cruzada - método k-fold
 
 <center>
 ![](img/kfold_cv.png){width=85%, height=85%}
