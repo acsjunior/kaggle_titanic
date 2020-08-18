@@ -109,7 +109,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Variáveis binárias (dummies)
 
-* Presença ou ausência de uma determinada características "dizem"<br><br><br>
+* Presença ou ausência de uma determinada característica<br><br><br>
 
 * Uma variável com $n$ níveis deve gerar $n-1$ dummies [@Favero2017]
 
@@ -292,18 +292,7 @@ knitr::opts_chunk$set(echo = FALSE)
 <center>
 
 
-## Dilema viés variância
 
-<center>
-![](img/bias_variance12.png){width=58%, height=58%}
-<center>
-
-
-## Dilema viés variância
-
-<center>
-![](img/bias_variance13.png){width=58%, height=58%}
-<center>
 
 
 ## Dilema viés variância
